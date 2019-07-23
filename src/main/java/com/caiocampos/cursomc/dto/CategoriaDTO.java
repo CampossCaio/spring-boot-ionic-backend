@@ -5,6 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.caiocampos.cursomc.domain.Categoria;
 
 @Entity
@@ -13,6 +16,9 @@ public class CategoriaDTO implements Serializable{
 	
 	@Id
 	private  Integer id;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
+	@Length(min=5, max=80, message="O tamanho deve ser entre 5 e 80 caracteres")
 	private String nome;
 	
 	public CategoriaDTO() {
