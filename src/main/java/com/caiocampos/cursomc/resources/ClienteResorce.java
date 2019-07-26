@@ -1,7 +1,6 @@
 package com.caiocampos.cursomc.resources;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.caiocampos.cursomc.domain.Cliente;
 import com.caiocampos.cursomc.dto.ClienteDTO;
+import com.caiocampos.cursomc.dto.ClienteNewDTO;
 import com.caiocampos.cursomc.services.ClienteService;
 
 @RestController
@@ -34,7 +34,7 @@ public class ClienteResorce {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void>insert(@RequestBody ClienteDTO objDto){
+	public ResponseEntity<Void>insert(@RequestBody ClienteNewDTO objDto){
 		Cliente obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 	    URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -72,6 +72,7 @@ public class ClienteResorce {
 		Page<Cliente> list = service.findPage(page, linesPerPage, orderBy, direction);
 		Page<ClienteDTO> listDto = list.map(obj -> new ClienteDTO(obj));
 		return ResponseEntity.ok().body(listDto);
-		
 	}
+	
+	
 }
