@@ -36,7 +36,7 @@ public class ClienteResorce {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void>insert( @RequestBody ClienteNewDTO objDto){
+	public ResponseEntity<Void>insert(@Valid @RequestBody ClienteNewDTO objDto){
 		Cliente obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 	    URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
