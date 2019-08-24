@@ -48,6 +48,7 @@ public class Cliente implements Serializable{
 	private Set<String> telefones = new HashSet<>();
     
     @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "PERFIL")
     private Set<Integer> perfis = new HashSet<>();
     
     @JsonIgnore
