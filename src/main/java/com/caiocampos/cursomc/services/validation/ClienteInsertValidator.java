@@ -43,7 +43,7 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
 			list.add(new FieldMessage("email", "Email já existente"));
 		}
 		
-// inclua os testes aqui, inserindo erros na lista
+        // inclua os testes aqui, inserindo erros na lista
 		
 		for (FieldMessage e : list) {
 			context.disableDefaultConstraintViolation();
